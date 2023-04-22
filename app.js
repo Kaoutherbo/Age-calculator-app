@@ -20,7 +20,7 @@ const typeOferror=[
   "",
   "This field is required",
   "Must be a valid month",
-  "Must be a past year",
+  "Must be a valid year",
   "Must be a valid day",
   "Must be a valid date",
 ];
@@ -110,7 +110,7 @@ const isCorrectYear = () => {
   if (year.value == "") {
     errorState(2, year, typeOferror[1], "#ff5757");
     return false;
-  } else if (year.value > currentYear) {
+  } else if (year.value > currentYear || year.value < 0) {
     errorState(2, year, typeOferror[3], "#ff5757");
     return false;
   } else if (year.value == currentYear && month.value > currentMonth) {
