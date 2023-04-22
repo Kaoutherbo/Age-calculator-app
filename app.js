@@ -20,7 +20,7 @@ const typeOferror=[
   "",
   "This field is required",
   "Must be a valid month",
-  "Must be a valid year",
+  "Must be a past year",
   "Must be a valid day",
   "Must be a valid date",
 ];
@@ -33,9 +33,9 @@ const errorState = (numberofError,typeofDate,typeOferror,color)=>{
 }
 
 //Function that checks if it is a leap year or not 
-const isLeapYear = (day,month,year)=>{
+const  isLeapYear = (day,month,year)=>{
 month--;
-fullDate=new Date(year,month,day);
+const fullDate=new Date(year,month,day);
 if(day==fullDate.getDate() && month==fullDate.getMonth() && year==fullDate.getFullYear()){
   return true;
 }
@@ -45,7 +45,7 @@ else{
 }
 
 //Function that calculates the age 
-const substractAge = ()=>{
+const CalculateAge = ()=>{
   let newYear=Math.abs(currentYear-year.value);
 
   let newMonth=0;
@@ -65,13 +65,6 @@ const substractAge = ()=>{
     }
     else{
       newDay=currentDay-day.value;
-    }
-    if(newMonth < 0){
-      newMonth=11;
-      newYear--;
-    }
-    if(newMonth < currentMonth){
-      newDay++;
     }
   }
   spans[0].innerHTML=newYear;
@@ -132,13 +125,13 @@ const isCorrectYear = () => {
   }
 }
 
-//Function to check the errors and display the results 
+//Check the errors and display the results 
 submitButton.addEventListener('click',()=>{
     isCorrectDay();
     isCorrectMonth();
     isCorrectYear();
     if(isCorrectDay() && isCorrectMonth() && isCorrectYear() ){
-      substractAge();
+      CalculateAge();
   }
 })
 
