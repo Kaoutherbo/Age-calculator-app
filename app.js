@@ -46,25 +46,25 @@ else{
 
 //Function that calculates the age 
 const CalculateAge = ()=>{
-  let newYear=Math.abs(currentYear-year.value);
+  let newYear=Math.abs(Number(currentYear) - Number(year.value));
 
   let newMonth=0;
   if(currentMonth >= month.value){
-    newMonth=currentMonth-month.value;
+    newMonth=Number(currentMonth)-Number(month.value);
   }
   else{
     newYear--;
-    newMonth=12+currentMonth-month.value;
+    newMonth=12+Number(currentMonth)-Number(month.value);
   }
   let newDay=0;
   if(currentDay >= day.value){
-    newDay=currentDay-day.value;
+    newDay=Number(currentDay)-Number(day.value);
   }else{
     if(isLeapYear(day.value,month.value,year.value)){
-      newDay=30+currentDay-day.value;
+      newDay=30+Number(currentDay)-Number(day.value);
     }
     else{
-      newDay=currentDay-day.value;
+      newDay=Number(currentDay)-Number(day.value);
     }
   }
   spans[0].innerHTML=newYear;
@@ -132,6 +132,5 @@ submitButton.addEventListener('click',()=>{
     isCorrectYear();
     if(isCorrectDay() && isCorrectMonth() && isCorrectYear() ){
       CalculateAge();
-  }
+  }   
 })
-
