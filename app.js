@@ -60,6 +60,7 @@ const CalculateAge = ()=>{
   if(currentDay >= day.value){
     newDay=Number(currentDay)-Number(day.value);
   }else{
+    newMonth--;
     if(isLeapYear(day.value,month.value,year.value)){
       newDay=30+Number(currentDay)-Number(day.value);
     }
