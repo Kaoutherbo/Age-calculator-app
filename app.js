@@ -49,8 +49,11 @@ const CalculateAge = ()=>{
   let newYear=Math.abs(Number(currentYear) - Number(year.value));
 
   let newMonth=0;
-  if(currentMonth >= month.value){
+  if(currentMonth > month.value){
     newMonth=Number(currentMonth)-Number(month.value);
+  }
+  else if(currentMonth ==month.value && currentDay >= day.value){
+    newMonth=11;
   }
   else{
     newYear--;
@@ -65,7 +68,8 @@ const CalculateAge = ()=>{
       newDay=30+Number(currentDay)-Number(day.value);
     }
     else{
-      newDay=Number(currentDay)-Number(day.value);
+     
+      newDay = Number(currentDay)-Number(day.value);
     }
   }
   spans[0].innerHTML=newYear;
